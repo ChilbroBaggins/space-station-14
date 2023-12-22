@@ -29,7 +29,7 @@
         - HolofanProjector
         - Multitool
         - AppraisalTool
-        - JawsOfLife
+        - MonkeyCube
       components:
         - SprayPainter
         - NetworkConfigurator
@@ -58,10 +58,6 @@
         whitelist:
           tags:
           - CrowbarRed
-      jaws:
-        whitelist:
-          tags:
-          - JawsOfLife
       screwdriver_nuke:
         whitelist:
           tags:
@@ -88,8 +84,6 @@
   - type: Clothing
     sprite: Clothing/Belt/ce.rsi
   - type: Storage
-    grid:
-    - 0,0,9,1
     # TODO: Fill this out more.
     whitelist:
       tags:
@@ -175,7 +169,6 @@
       components:
         - Stunbaton
         - FlashOnTrigger
-        - SmokeOnTrigger
         - Flash
         - Handcuff
         - RangedMagazine
@@ -190,10 +183,6 @@
         whitelist:
           components:
           - Stunbaton
-      tear_gas_grenade:
-        whitelist:
-          components:
-          - SmokeOnTrigger
     sprite: Clothing/Belt/belt_overlay.rsi
   - type: Appearance
 
@@ -358,6 +347,81 @@
 
 - type: entity
   parent: ClothingBeltStorageBase
+  id: ClothingBeltChef
+  name: chef belt
+  description: A belt used to hold kitchen knives and condiments for quick access.
+  components:
+  - type: Sprite
+    sprite: Clothing/Belt/chef.rsi
+  - type: Clothing
+    sprite: Clothing/Belt/chef.rsi
+  - type: Storage
+    whitelist:
+      tags:
+        - KitchenKnife
+        - Cleaver
+        - RollingPin
+        - Coldsauce
+        - Enzyme
+        - Hotsauce
+        - Ketchup
+        - BBQsauce
+        - SaltShaker
+        - PepperShaker
+        - CigPack
+        - Packet
+        - Skewer
+        - Mousetrap
+      components:
+        - Smokable
+        - Utensil
+  - type: ItemMapper
+    mapLayers:
+      kitchenknife:
+        whitelist:
+          tags:
+          - KitchenKnife
+      cleaver:
+        whitelist:
+          tags:
+          - Cleaver
+      rollingpin:
+        whitelist:
+          tags:
+          - RollingPin
+      coldsauce:
+        whitelist:
+          tags:
+          - Coldsauce
+      enzyme:
+        whitelist:
+          tags:
+          - Enzyme
+      hotsauce:
+        whitelist:
+          tags:
+          - Hotsauce
+      ketchup:
+        whitelist:
+          tags:
+          - Ketchup
+      bbqsauce:
+        whitelist:
+          tags:
+          - BBQsauce
+      saltshaker:
+        whitelist:
+          tags:
+          - SaltShaker
+      peppershaker:
+        whitelist:
+          tags:
+          - PepperShaker
+    sprite: Clothing/Belt/belt_overlay.rsi
+  - type: Appearance
+
+- type: entity
+  parent: ClothingBeltStorageBase
   id: ClothingBeltSecurity
   name: security belt
   description: Can hold security gear like handcuffs and flashes.
@@ -373,12 +437,9 @@
         - Taser
         - SecBeltEquip
         - Radio
-        - Sidearm
-        - MagazinePistol
       components:
         - Stunbaton
         - FlashOnTrigger
-        - SmokeOnTrigger
         - Flash
         - Handcuff
   - type: ItemMapper
@@ -391,15 +452,11 @@
         whitelist:
           components:
           - Stunbaton
-      tear_gas_grenade:
-        whitelist:
-          components:
-          - SmokeOnTrigger
     sprite: Clothing/Belt/belt_overlay.rsi
   - type: Appearance
 
 - type: entity
-  parent: [ClothingBeltBase, ClothingSlotBase]
+  parent: ClothingBeltStorageBase
   id: ClothingBeltSheath
   name: sabre sheath
   description: An ornate sheath designed to hold an officer's blade.
@@ -409,17 +466,11 @@
     state: sheath
   - type: Clothing
     sprite: Clothing/Belt/sheath.rsi
-  - type: Item
-    size: Ginormous
-  - type: ItemSlots
-    slots:
-      item:
-        name: Sabre
-        insertVerbText: sheath-insert-verb
-        ejectVerbText: sheath-eject-verb
-        whitelist:
-          tags:
-          - CaptainSabre
+  - type: Storage
+    maxSlots: 1
+    whitelist:
+      tags:
+        - CaptainSabre
   - type: ItemMapper
     mapLayers:
       sheath-sabre:
@@ -427,7 +478,7 @@
           tags:
           - CaptainSabre
   - type: Appearance
- 
+
 # Belts without visualizers
 
 - type: entity
@@ -474,8 +525,7 @@
   - type: Clothing
     sprite: Clothing/Belt/holster.rsi
   - type: Storage
-    grid:
-    - 0,0,3,1
+    maxSlots: 3
 
 - type: entity
   parent: ClothingBeltStorageBase
@@ -488,11 +538,8 @@
   - type: Clothing
     sprite: Clothing/Belt/syndieholster.rsi
   - type: Item
-    size: Ginormous
+    size: Huge
   - type: Storage
-    maxItemSize: Huge
-    grid:
-    - 0,0,3,3
     whitelist:
       components:
         - Gun
@@ -533,7 +580,7 @@
     sprite: Clothing/Belt/salvagewebbing.rsi
 
 - type: entity
-  parent: [ClothingBeltStorageBase, ContentsExplosionResistanceBase]
+  parent: ClothingBeltStorageBase
   id: ClothingBeltMilitaryWebbing
   name: chest rig
   description: A set of tactical webbing worn by Syndicate boarding parties.
@@ -542,11 +589,9 @@
     sprite: Clothing/Belt/militarywebbing.rsi
   - type: Clothing
     sprite: Clothing/Belt/militarywebbing.rsi
-  - type: ExplosionResistance
-    damageCoefficient: 0.5
 
 - type: entity
-  parent: ClothingBeltMilitaryWebbing
+  parent: ClothingBeltStorageBase
   id: ClothingBeltMilitaryWebbingMed
   name: medical chest rig
   description: A set of tactical webbing worn by Gorlex Marauder medic operatives.
@@ -585,8 +630,7 @@
   - type: Clothing
     sprite: Clothing/Belt/wand.rsi
   - type: Storage
-    grid:
-    - 0,0,15,1
+    maxSlots: 8
     whitelist:
       tags:
       - WizardWand

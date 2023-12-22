@@ -57,6 +57,7 @@
     - type: Tag
       tags:
         - DroneUsable
+        - Mousetrap
 
 - type: entity
   name: mousetrap
