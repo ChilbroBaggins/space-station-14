@@ -536,7 +536,7 @@
       - state: ai
   - type: ConditionalSpawner
     prototypes:
-      - MobSlimesPet
+      - SentientSmileCore
 
 - type: entity
   name: Pun Pun Spawner
