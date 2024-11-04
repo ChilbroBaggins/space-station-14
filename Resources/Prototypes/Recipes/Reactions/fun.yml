@@ -210,7 +210,7 @@
   reactants:
     Happiness:
       amount: 4
-    Mold: #GreyMatter would be cool but too hard. Meybe replace if there's an easier way to obtain in the future.
+    SentientGreyMatter:
       amount: 5
     JuiceThatMakesYouWeh:
       amount: 10

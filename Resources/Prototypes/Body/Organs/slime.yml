@@ -34,7 +34,7 @@
           - ReagentId: Slime
             Quantity: 10
 
-      
+
 - type: entity
   id: OrganSlimeLungs
   parent: BaseHumanOrgan
